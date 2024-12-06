@@ -5,7 +5,8 @@ const processButton = document.getElementById('processButton');
 // List of special characters to remove
 const specialCharacters = ['-', '/', '.', ';', ',', '(', ')', '{', '}', '[', ']'];
 // List of words that should not be capitalized
-const exceptions = ['de', 'la', 'los', 'las', 'el', 'lo', 'un', 'una', 'uno', 'unas', 'unos', "y"];
+const exceptions = ['de', 'la', 'los', 'las', 'el', 'lo', 'un', 'una', 'uno', 'unas', 'unos', 'y', 'a', 'os', 'as', 'o', 'lo', 'um', 'uma', 'um', 'umas', 'uns', 'e'];
+
 
 // Text processing
 const processText = () => {
