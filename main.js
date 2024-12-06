@@ -1,11 +1,12 @@
 const textInput = document.getElementById('textInput');
 const textOutput = document.getElementById('textOutput');
 const processButton = document.getElementById('processButton');
+const copyButton = document.getElementById('copyButton');
 
 // List of special characters to remove
 const specialCharacters = ['-', '/', '.', ';', ',', '(', ')', '{', '}', '[', ']', ':', '_'];
 // List of words that should not be capitalized
-const exceptions = ['de', 'la', 'los', 'las', 'el', 'lo', 'un', 'una', 'uno', 'unas', 'unos', 'y', 'en', 'a', 'os', 'as', 'o', 'lo', 'um', 'uma', 'um', 'umas', 'uns', 'e', 'dos'];
+const exceptions = ['de', 'la', 'los', 'las', 'el', 'lo', 'un', 'una', 'uno', 'unas', 'unos', 'y', 'en', 'a', 'os', 'as', 'o', 'lo', 'um', 'uma', 'um', 'umas', 'uns', 'e', 'dos', 'em'];
 
 
 // Text processing
@@ -55,3 +56,7 @@ const copyText = () => {
 textInput.addEventListener("keyup", processText);
 
 processButton.addEventListener("click", processText);
+
+copyButton.addEventListener("click", copyText);
+
+
