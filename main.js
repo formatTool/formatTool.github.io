@@ -13,19 +13,22 @@ const exceptions = ['de', 'la', 'los', 'las', 'el', 'lo', 'un', 'una', 'uno', 'u
 const processText = () => {
     let text = textInput.value;
 
-    // Step 1: Remove special characters
+    // Step 1: Trim spaces before and after the text
+    text = text.trim();
+
+    // Step 2: Remove special characters
     specialCharacters.forEach(char => {
         const regex = new RegExp(`\\${char}`, 'g');
         text = text.replace(regex, '');
     });
 
-    // Step 2: Remove double spaces
+    // Step 3: Remove double spaces
     text = text.replace(/\s\s+/g, ' ');
 
-    // Step 3: Convert all words to lowercase
+    // Step 4: Convert all words to lowercase
     text = text.toLowerCase();
 
-    // Step 4: Capitalize the first letter of each word, except for exceptions
+    // Step 5: Capitalize the first letter of each word, except for exceptions
     text = text.split(' ').map((word, index) => {
         // Capitalize the first word
         if (index === 0) {
