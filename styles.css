@@ -76,7 +76,9 @@ button:active {
 }
 
 /* Paragraph for the output */
-p#textOutput {
+p#textOutput,
+#textOutput1,
+#textOutput2 {
     width: 100%;
     max-width: 400px;
     padding: 10px;
