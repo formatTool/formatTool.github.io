@@ -1,13 +1,14 @@
 const textInput = document.getElementById('textInput');
-const textOutput = document.getElementById('textOutput');
-const processButton = document.getElementById('processButton');
-const copyButton = document.getElementById('copyButton');
+const textOutput1 = document.getElementById('textOutput1');
+const textOutput2 = document.getElementById('textOutput2');
+const copyButton1 = document.getElementById('copyButton1');
+const copyButton2 = document.getElementById('copyButton2');
+const pasteButton = document.getElementById('pasteButton');
 
 // List of special characters to remove
 const specialCharacters = ['-', '/', '.', ';', ',', '(', ')', '{', '}', '[', ']', ':', '_', '+'];
 // List of words that should not be capitalized
 const exceptions = ['de', 'la', 'los', 'las', 'el', 'lo', 'un', 'una', 'uno', 'unas', 'unos', 'y', 'en', 'a', 'os', 'as', 'o', 'lo', 'um', 'uma', 'um', 'umas', 'uns', 'e', 'dos', 'em'];
-
 
 // Text processing
 const processText = () => {
@@ -19,7 +20,7 @@ const processText = () => {
     // Step 2: Remove special characters
     specialCharacters.forEach(char => {
         const regex = new RegExp(`\\${char}`, 'g');
-        text = text.replace(regex, '');
+        text = text.replace(regex, ' ');
     });
 
     // Step 3: Remove double spaces
@@ -28,8 +29,11 @@ const processText = () => {
     // Step 4: Convert all words to lowercase
     text = text.toLowerCase();
 
-    // Step 5: Capitalize the first letter of each word, except for exceptions
-    text = text.split(' ').map((word, index) => {
+    // Step 5: Capitalize the first letter of the entire sentence
+    const capitalizedSentence = text.charAt(0).toUpperCase() + text.slice(1);
+
+    // Step 6: Capitalize the first letter of each word, except for exceptions
+    const capitalizedWithExceptions = text.split(' ').map((word, index) => {
         // Capitalize the first word
         if (index === 0) {
             return word.charAt(0).toUpperCase() + word.slice(1);
@@ -41,25 +45,29 @@ const processText = () => {
         return word;
     }).join(' ');
 
-    // Update the output
-    textOutput.innerHTML = text;
+    // Update the outputs
+    textOutput1.innerHTML = capitalizedSentence;
+    textOutput2.innerHTML = capitalizedWithExceptions;
 }
 
+// Paste Text
+pasteButton.addEventListener('click', () => {
+    navigator.clipboard.readText().then(text => {
+        textInput.value = text;
+        processText(); // Optionally process the text immediately after pasting
+    }).catch(err => {
+        console.error('Failed to read clipboard contents: ', err);
+    });
+});
+
 // Copy Text
-
-const copyText = () => {
-    
-    var textToCopy = textOutput.innerHTML
-  
-    // Copy the text inside the text field
-    navigator.clipboard.writeText(textToCopy);
-
-  }
+const copyText = (outputElement) => {
+    const textToCopy = outputElement.innerText;
+    navigator.clipboard.writeText(textToCopy).catch(err => {
+        console.error('Failed to copy text: ', err);
+    });
+}
 
 textInput.addEventListener("keyup", processText);
-
-processButton.addEventListener("click", processText);
-
-copyButton.addEventListener("click", copyText);
-
-
+copyButton1.addEventListener("click", () => copyText(textOutput1));
+copyButton2.addEventListener("click", () => copyText(textOutput2));
