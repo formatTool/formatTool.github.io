@@ -10,16 +10,46 @@
 </head>
 <body>
 
-    <h1>Format Tool</h1>
-    <label for="textInput">Input</label>
-    <input type="text" id="textInput" placeholder="Escribir o pegar texto aquí.">
-    <button id="pasteButton" title="Presionar dos veces en poput">Pegar texto</button>
-    <div id="textOutput1">Output</div>
-    <button id="copyButton1">Copiar Texto</button>
-    <div id="textOutput2">Output</div>
-    <button id="copyButton2">Copiar Texto</button>
-    <div id="textOutput3">Output</div>
-    <button id="copyButton3">Copiar Texto</button>
+    <div class="container">
+        <h1>Format Tool</h1>
+        <div class="input-container">
+            <button id="pasteButton" title="Presionar dos veces en popup">Pegar texto del portapapeles</button>
+            <input type="text" id="textInput" placeholder="Escribir o pegar texto aquí.">
+        </div>
+        
+        <label for="specialCharactersInput">Caracteres especiales a eliminar (separados por espacios):</label>
+        <input type="text" id="specialCharactersInput" placeholder="- / . ; , ( ) { } [ ] : _ + \ º" value="- / . ; , ( ) { } [ ] : _ + \ º">
+        
+        <div class="output-container">
+            <div class="output-column">
+                <div id="textOutput1">Output</div>
+                <div class="description-button-container">
+                    <div class="output-description">Texto sin caracteres especiales</div>
+                    <button id="copyButton1">Copiar Resultado</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="output-container">
+            <div class="output-column">
+                <div id="textOutput2">Output</div>
+                <div class="description-button-container">
+                    <div class="output-description">Texto en minúsculas</div>
+                    <button id="copyButton2">Copiar Resultado</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="output-container">
+            <div class="output-column">
+                <div id="textOutput3">Output</div>
+                <div class="description-button-container">
+                    <div class="output-description">Texto con conectores en minúsculas</div>
+                    <button id="copyButton3">Copiar Resultado</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="main.js"></script>
 
