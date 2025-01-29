@@ -2,15 +2,23 @@ const textInput = document.getElementById('textInput');
 const textOutput1 = document.getElementById('textOutput1');
 const textOutput2 = document.getElementById('textOutput2');
 const textOutput3 = document.getElementById('textOutput3');
+const processButton = document.getElementById('processButton');
 const copyButton1 = document.getElementById('copyButton1');
 const copyButton2 = document.getElementById('copyButton2');
 const copyButton3 = document.getElementById('copyButton3');
 const pasteButton = document.getElementById('pasteButton');
+const specialCharactersInput = document.getElementById('specialCharactersInput');
 
 // List of special characters to remove
-const specialCharacters = ['-', '/', '.', ';', ',', '(', ')', '{', '}', '[', ']', ':', '_', '+'];
+let specialCharacters = ['-', '/', '.', ';', ',', '(', ')', '{', '}', '[', ']', ':', '_', '+', '|','\\', 'º'];
 // List of words that should not be capitalized
 const exceptions = ['de', 'la', 'los', 'las', 'el', 'lo', 'un', 'una', 'uno', 'unas', 'unos', 'y', 'en', 'a', 'os', 'as', 'o', 'lo', 'um', 'uma', 'um', 'umas', 'uns', 'e', 'dos', 'em'];
+
+// Update special characters array based on user input
+specialCharactersInput.addEventListener('input', () => {
+    specialCharacters = specialCharactersInput.value.split(' ').map(char => char.trim());
+    processText(); // Re-process the text with the updated special characters
+});
 
 // Text processing
 const processText = () => {
