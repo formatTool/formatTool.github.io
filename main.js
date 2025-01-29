@@ -1,8 +1,10 @@
 const textInput = document.getElementById('textInput');
 const textOutput1 = document.getElementById('textOutput1');
 const textOutput2 = document.getElementById('textOutput2');
+const textOutput3 = document.getElementById('textOutput3');
 const copyButton1 = document.getElementById('copyButton1');
 const copyButton2 = document.getElementById('copyButton2');
+const copyButton3 = document.getElementById('copyButton3');
 const pasteButton = document.getElementById('pasteButton');
 
 // List of special characters to remove
@@ -26,6 +28,9 @@ const processText = () => {
     // Step 3: Remove double spaces
     text = text.replace(/\s\s+/g, ' ');
 
+    // Output before capitalization
+    textOutput1.innerHTML = text;
+
     // Step 4: Convert all words to lowercase
     text = text.toLowerCase();
 
@@ -46,8 +51,8 @@ const processText = () => {
     }).join(' ');
 
     // Update the outputs
-    textOutput1.innerHTML = capitalizedSentence;
-    textOutput2.innerHTML = capitalizedWithExceptions;
+    textOutput2.innerHTML = capitalizedSentence;
+    textOutput3.innerHTML = capitalizedWithExceptions;
 }
 
 // Paste Text
@@ -71,3 +76,4 @@ const copyText = (outputElement) => {
 textInput.addEventListener("keyup", processText);
 copyButton1.addEventListener("click", () => copyText(textOutput1));
 copyButton2.addEventListener("click", () => copyText(textOutput2));
+copyButton3.addEventListener("click", () => copyText(textOutput3));
