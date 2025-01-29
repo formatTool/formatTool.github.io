@@ -78,7 +78,8 @@ button:active {
 /* Paragraph for the output */
 p#textOutput,
 #textOutput1,
-#textOutput2 {
+#textOutput2,
+#textOutput3{
     width: 100%;
     max-width: 400px;
     padding: 10px;
